@@ -1,6 +1,8 @@
-*.class
+# Ignore temp files
+*~
+# Ignore all dotfiles
+.*
+# except for .gitignore
+!.gitignore
 
-# Package Files #
-*.jar
-*.war
-*.ear
+*.class
