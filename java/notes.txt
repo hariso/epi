@@ -1,0 +1,13 @@
+NOTES:
+
+1. In order to keep the Java code syntax as close to the original as possible, I used list element access by index even in cases where that may degrade performance. 
+
+2. In case of commonly used static utility methods (such as java.lang.Math.max()), I didn't statically import the method.
+
+3. In Bignumber_multiplication, instead of calling the shell, I used Java's BigInteger to verify results. 
+
+4. Java files are named in the same way as original, C++, files.
+
+5. It seemed to me that in Sudoku_check, using a simple array instead of a deque in Java (for variable is_present) was a good choice.
+
+6. Since Java doesn't support reversing an array out-of-the-box, I wrote a method to reverse a char array myself.
