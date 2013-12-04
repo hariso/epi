@@ -1,4 +1,4 @@
-package com.elementsofprogramminginterviews;
+package com.elementsofprogramminginterviews.ch6;
 
 public class Regular_expression {
 	// @include

@@ -1,5 +1,5 @@
 // Copyright (c) 2013 Elements of Programming Interviews. All rights reserved.
-package com.elementsofprogramminginterviews;
+package com.elementsofprogramminginterviews.ch6;
 
 import static com.elementsofprogramminginterviews.utils.Utils.*;
 

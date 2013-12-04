@@ -1,5 +1,5 @@
 // Copyright (c) 2013 Elements of Programming Interviews. All rights reserved.
-package com.elementsofprogramminginterviews;
+package com.elementsofprogramminginterviews.ch6;
 
 
 // @include
@@ -13,7 +13,7 @@ class Array<ValueType> {
 		S_ = new int[N];
 	}
 
-	public boolean read(int i, GenericDTO<ValueType> v) {
+	public boolean read(int i, Wrapper<ValueType> v) {
 		if (isValid(i)) {
 			v.object = A_[i];
 			return true;
@@ -34,10 +34,10 @@ class Array<ValueType> {
 	}
 }
 
-class GenericDTO<T> {
+class Wrapper<T> {
 	T object;
 	
-	public GenericDTO(T object) {
+	public Wrapper(T object) {
 		this.object = object;
 	}
 }
@@ -48,7 +48,7 @@ public class lazy_init {
 
 	public static void main(String[] args) {
 		Array<Integer> A = new Array<Integer>(Integer.class, 11);
-		GenericDTO<Integer> x = new GenericDTO<Integer>(0);
+		Wrapper<Integer> x = new Wrapper<Integer>(0);
 
 		assert (A.read(0, x) == false);
 		assert (A.read(1, x) == false);

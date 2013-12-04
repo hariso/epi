@@ -1,30 +1,11 @@
 // Copyright (c) 2013 Elements of Programming Interviews. All rights reserved.
-package com.elementsofprogramminginterviews;
+package com.elementsofprogramminginterviews.ch6;
 
 import java.util.Random;
 
-public class Matrix_rotation_naive {
+import static com.elementsofprogramminginterviews.utils.Utils.*;
 
-	static void print_matrix(int[][] A) {
-		for (int i = 0; i < A.length; ++i) {
-			// simplePrint(A[i]);
-			for (int j = 0; j < A.length; ++j) {
-				System.out.print(String.format("A[%d, %d] = %d ", i, j, A[i][j]));
-			}
-			System.out.println();
-		}
-	}
-
-	static void check_answer(int[][] A) {
-		int k = 1;
-		for (int j = A.length - 1; j >= 0; --j) {
-			for (int i = 0; i < A.length; ++i) {
-				assert (k++ == A[i][j]);
-			}
-		}
-	}
-
-	// @include
+public class Matrix_rotation_constant {
 	static void rotate_matrix(int[][] A) {
 		for (int i = 0; i < (A.length >> 1); ++i) {
 			for (int j = i; j < A.length - i - 1; ++j) {
@@ -36,7 +17,15 @@ public class Matrix_rotation_naive {
 			}
 		}
 	}
-	// @exclude
+
+	static void check_answer(int[][] A, int[][] B) {
+		RotatedMatrix rA = new RotatedMatrix(A);
+		for (int i = 0; i < A.length; ++i) {
+			for (int j = 0; j < A.length; ++j) {
+				assert (rA.ReadEntry(i, j) == B[i][j]);
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		int n;
@@ -49,10 +38,9 @@ public class Matrix_rotation_naive {
 					A[i][j] = k++;
 				}
 			}
-			print_matrix(A);
-			rotate_matrix(A);
-			check_answer(A);
-			print_matrix(A);
+			int[][] B = copy(A);
+			rotate_matrix(B);
+			check_answer(A, B);
 		} else {
 			Random gen = new Random();
 			for (int times = 0; times < 100; ++times) {
@@ -64,10 +52,33 @@ public class Matrix_rotation_naive {
 						A[i][j] = k++;
 					}
 				}
-				rotate_matrix(A);
-				check_answer(A);
+				int[][] B = copy(A);
+				rotate_matrix(B);
+				check_answer(A, B);
 			}
 		}
 	}
+}
+
+// @include
+class RotatedMatrix {
+	private int[][] A_;
+
+	public RotatedMatrix(int[][] A) {
+		this.A_ = A;
+	}
+
+	int ReadEntry(int i, int j) {
+		return A_[A_.length - 1 - j][i];
+	}
+
+	void WriteEntry(int i, int j, int v) {
+		A_[A_.length - 1 - j][i] = v;
+	}
+
+	int size() {
+		return A_.length;
+	}
 
 }
+// @exclude
