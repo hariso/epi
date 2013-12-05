@@ -37,24 +37,24 @@ public class Next_permutation {
 
 	public static void main(String[] args) {
 		Random gen = new Random();
-		 
-		  for (int times = 0; times < 1000; ++times) {
-		    List<Integer> p = new ArrayList<Integer>();
-		    if (args.length > 2) {
-		      for (int i = 1; i < args.length; ++i) {
-		        p.add(Integer.valueOf(args[i]));
-		      }
-		    } else {
-		      int n = (args.length == 2 ? Integer.valueOf(args[1]) : (gen.nextInt(100) + 1));
-		      for (int i = 0; i < n; ++i) {
-		        p.add(gen.nextInt(n));
-		      }
-		    }
 
-		    List<Integer> ans = new ArrayList<Integer>(next_permutation(p));
-		    next_permutation(p);
-		    assert equal(ans, p);
-		  }
+		for (int times = 0; times < 1000; ++times) {
+			List<Integer> p = new ArrayList<Integer>();
+			if (args.length > 2) {
+				for (int i = 1; i < args.length; ++i) {
+					p.add(Integer.valueOf(args[i]));
+				}
+			} else {
+				int n = (args.length == 2 ? Integer.valueOf(args[1]) : (gen.nextInt(100) + 1));
+				for (int i = 0; i < n; ++i) {
+					p.add(gen.nextInt(n));
+				}
+			}
+
+			List<Integer> ans = new ArrayList<Integer>(next_permutation(p));
+			next_permutation(p);
+			assert equal(ans, p);
+		}
 
 	}
 }

@@ -1,13 +1,14 @@
 package com.elementsofprogramminginterviews.utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class Utils {
+	
+	private static Random random;
 	
 	public static int[][] copy(int[][] m) {
 		int[][] copy = new int[m.length][];
@@ -30,14 +31,19 @@ public class Utils {
 		if (array == null || array.length == 0) {
 			return;
 		}
-		
-		List<Integer> list = new ArrayList<Integer>();
-		
-		for (int i = 0; i < array.length; i++) {
-			list.add(array[i]);
+
+		Random rnd = random;
+		if (rnd == null) {
+			random = rnd = new Random();
 		}
-		
-		Collections.shuffle(list);
+
+		for (int i = array.length; i > 1; i--) {
+			int newIndex = rnd.nextInt(i);
+			int tmp = array[i - 1];
+			array[i - 1] = array[newIndex];
+			array[newIndex] = tmp;
+		}
+
 	}
 	
 	public static void fill(int[] array, int val) {
@@ -97,15 +103,28 @@ public class Utils {
 		list.set(index2, element1_copy);
 	}
 	
+	/**
+	 * Adds <code>num_of_elements</code> of elements to the list
+	 * <code>list</code>, each being a copy of <code>value</code>.
+	 * 
+	 * @param list
+	 * @param num_of_elements
+	 * @param value
+	 */
 	public static void fill(List<Integer> list, int num_of_elements, int value) {
 		for (int i = 1; i <= num_of_elements; ++i) {
 			list.add(value);
 		}
 	}
 
-	/*
-	 * Fills the range [from, to) with sequentially increasing values,
-	 * starting with value and repetitively evaluating ++value.
+	/**
+	 * Fills the range [from, to) with sequentially increasing values, starting
+	 * with value and repetitively evaluating ++value.
+	 * 
+	 * @param array
+	 * @param from
+	 * @param to
+	 * @param value
 	 */
 	public static void iota(int[] array, int from, int to, int value) {
 		for (int i = from; i < to; ++i) {
@@ -113,9 +132,13 @@ public class Utils {
 		}
 	}
 	
-	/*
-	 * Fills the list with sequentially increasing values,
-	 * starting with value and repetitively evaluating ++value.
+	/**
+	 * Fills the list with sequentially increasing values, starting with value
+	 * and repetitively evaluating ++value.
+	 * 
+	 * @param list
+	 * @param num_of_elements
+	 * @param value
 	 */
 	public static void iota(List<Integer> list, int num_of_elements, int value) {
 		for (int i = 1; i <= num_of_elements; ++i) {
@@ -169,25 +192,13 @@ public class Utils {
 			return false;
 		}
 		
-		boolean areEqual = true;
 		for (int i = 0; i < list1.size(); i++) {
-			areEqual &= list1.get(i).equals(list2.get(i));
-		}
-		
-		return areEqual;
-	}
-	
-	public static boolean equal(int[] a, int[] b) {
-		if (a.length != b.length) {
-			return false;
-		}
-		
-		for (int i = 0; i < a.length; i++) {
-			if (a[i] != b[i]) {
+			if (!list1.get(i).equals(list2.get(i))) {
 				return false;
 			}
 		}
 		
 		return true;
 	}
+	
 }

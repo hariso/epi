@@ -53,16 +53,16 @@ public class Equiv_classes {
 	// @exclude
 
 	public static void main(String[] args) {
-		List<Integer> A = Arrays.asList(new Integer[]{1, 5, 3, 6});
-		  List<Integer> B = Arrays.asList(new Integer[]{2, 1, 0, 5});
-		  List<Integer> res = compute_equival_classes(7, A, B);
-		  simplePrint(res);
-		  assert(res.get(0) == 0);
-		  assert(res.get(1) == 1);
-		  assert(res.get(2) == 1);
-		  assert(res.get(3) == 0);
-		  assert(res.get(4) == 4);
-		  assert(res.get(5) == 1);
-		  assert(res.get(6) == 1);
+		List<Integer> A = Arrays.asList(new Integer[] { 1, 5, 3, 6 });
+		List<Integer> B = Arrays.asList(new Integer[] { 2, 1, 0, 5 });
+		List<Integer> res = compute_equival_classes(7, A, B);
+		simplePrint(res);
+		assert (res.get(0) == 0);
+		assert (res.get(1) == 1);
+		assert (res.get(2) == 1);
+		assert (res.get(3) == 0);
+		assert (res.get(4) == 4);
+		assert (res.get(5) == 1);
+		assert (res.get(6) == 1);
 	}
 }

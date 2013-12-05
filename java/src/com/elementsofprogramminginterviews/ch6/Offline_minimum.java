@@ -1,13 +1,14 @@
 // Copyright (c) 2013 Elements of Programming Interviews. All rights reserved.
 package com.elementsofprogramminginterviews.ch6;
 
-import static com.elementsofprogramminginterviews.utils.Utils.*;
+import static com.elementsofprogramminginterviews.utils.Utils.fill;
+import static com.elementsofprogramminginterviews.utils.Utils.iota;
+import static com.elementsofprogramminginterviews.utils.Utils.shuffle;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 import java.util.Arrays;
 import java.util.Random;
-
-import static java.lang.Math.max;
-import static java.lang.Math.min;
 
 public class Offline_minimum {
 	// @include
@@ -24,7 +25,7 @@ public class Offline_minimum {
 	}
 
 	static int[] offline_minimum(int[] A, int[] E) {
-	  int[] R = new int[A.length]; fill(R, E.length);
+	  int[] R = new int[A.length]; Arrays.fill(R, E.length);
 	  int pre = 0;
 
 	  // Initialize the collection of subsets.
@@ -108,7 +109,7 @@ public class Offline_minimum {
 	    System.out.println(Arrays.toString(ans));
 	    */
 	    int[] tmp = check_answer(A, E);
-	    assert(equal(ans, tmp));
+	    assert(Arrays.equals(ans, tmp));
 	  }
 	}
 
